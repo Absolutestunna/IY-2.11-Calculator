@@ -21,10 +21,10 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
   border-color: black;
   border-style: solid;
   background-color: yellow;
-
-  // float: right;
-  // font-size: $font-size;
-
+  p {
+    float: right;
+    font-size: 50px;
+  }
 
 }
 .calc-body {
