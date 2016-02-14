@@ -5824,9 +5824,7 @@ button.close {
   border-top: 10px;
   border-color: black;
   border-style: solid;
-  background-color: yellow;
-  float: right;
-  font-size: 30px; }
+  background-color: yellow; }
 
 .calc-body {
   margin: 10px; }
