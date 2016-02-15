@@ -1,6 +1,7 @@
 
 (function() {  //immediately invoked function expression
   //numbers definitions
+
     var one = document.querySelector(".one");
     var two = document.querySelector(".two");
     var three = document.querySelector(".three");
@@ -12,7 +13,7 @@
     var nine = document.querySelector(".nine");
     var zero = document.querySelector(".zero");
 
-  //operators definitions
+  // //operators definitions
     var plus = document.querySelector(".plus");
     var minus = document.querySelector(".minus");
     var divide = document.querySelector(".divide");
@@ -21,93 +22,105 @@
     var eq = document.querySelector(".equals");
     var disp = document.querySelector(".display p");
 
-  //Clear and clear all definitions
+  // //Clear and clear all definitions
     var c = document.querySelector(".clear");
     var cA = document.querySelector(".clearAll");
-
-  //global Variables
+  //
+  // //global Variables
     var num = "";     //selected number
     var newnum = "";  //selected updated number;
-    total = "";
+    var total = "";
     var sel_op1 = "";  //selected operator;
     var sel_op2 = "";
-    var counter = "";
+    var num_counter = 0;
+    var counter = 0;
     dispLength = "";
 
 
-  //pushNumber functions
+  // pushNumber functions
     function pushNumber() {
         num += this.textContent;
         disp.textContent = num;
-        dispLength = (disp.textContent).length;
+        // num_counter++;
 
     }
-  //pushOps functions
+  // pushOps functions
     function pushOperatorP() {
       sel_op1 = this.textContent;
       newnum = num;
-      disp.textContent = newnum + sel_op1;
+      disp.textContent = newnum;
       num = "";
-      counter++;
+      num_counter++;
+
+      if (num_counter > 1){
+        calculate();
+        console.log(total)
+
+        disp.textContent = total;
+
+        // newnum = "";
+        // num = "";
+      }
+
 
     }
+
     function pushOperatorM() {
       sel_op1 = this.textContent;
-      console.log(sel_op1)
       newnum = num;
       disp.textContent = newnum + sel_op1;
       num = "";
       counter++;
 
+      // if (counter > 1) {
+      //   sel_op1=this.textContent;             //prepare for new operation
+      //
+      // }
     }
+
     function pushOperatorMP() {
       sel_op1 = this.textContent;
-      console.log(sel_op1)
       newnum = num;
       disp.textContent = newnum + sel_op1;
       num = "";
       counter++;
-
     }
     function pushOperatorD() {
+
       sel_op1 = this.textContent;
-      console.log(sel_op1)
       newnum = num;
       disp.textContent = newnum + sel_op1;
       num = "";
       counter++;
-
-    }
+     }
 
     //function for calculations
     function calculate() {
       if (sel_op1 === "+"){
         total = parseInt(newnum,10) + parseInt(num,10);
-        disp.textContent = total;
-        newnum = "";
-        num = "";
-        console.log(counter);
-      }
-      if (sel_op1 === "-"){
-        total = parseInt(newnum,10) - parseInt(num,10);
-        disp.textContent = total;
-        newnum = "";
-        num = "";
-      }
-      if (sel_op1 === "/"){
-        total = parseInt(newnum,10) / parseInt(num,10);
-        disp.textContent = total;
-        newnum = "";
-        num = "";
-      }
-      if (sel_op1 === "*"){
-        total = parseInt(newnum,10) * parseInt(num,10);
-        disp.textContent = total;
-        newnum = "";
-        num = "";
-      }
-    }//end of calculate functions
 
+      }
+      else if (sel_op1 === "-"){
+        total = parseInt(newnum,10) - parseInt(num,10);
+
+      }
+      else if (sel_op1 === "/"){
+        total = parseInt(newnum,10) / parseInt(num,10);
+
+      }
+      else if (sel_op1 === "*"){
+        total = parseInt(newnum,10) * parseInt(num,10);
+
+      }
+     }//end of calculate functions
+
+     function equalize() {
+        calculate();
+        disp.textContent = total;
+        newnum = "";
+        num = "";
+
+     }
     //functions fo clear and clearAll
     function eraseOne() {
 
@@ -116,7 +129,7 @@
       num = "";
       newnum = "";
       disp.textContent = "0";
-      counter = "";
+      num_counter = "";
       }
 
 
@@ -139,7 +152,7 @@
      divide.addEventListener("click", pushOperatorD);
 
      //equals/calculate event
-     eq.addEventListener("click", calculate);
+     eq.addEventListener("click", equalize);
 
      //clear and clearAll events
      c.addEventListener("click", eraseOne);
