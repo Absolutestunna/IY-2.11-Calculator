@@ -76,6 +76,7 @@
       disp.textContent = newnum + sel_op1;
       num = "";
       counter++;
+      
 
     }
 
