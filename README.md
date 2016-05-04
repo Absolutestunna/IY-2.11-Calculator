@@ -1,1 +1,3 @@
-# IY-2.11-Calculator
+Project: Build a calculator
+
+Technologies: JS, HTML, CSS (styling and layout)
